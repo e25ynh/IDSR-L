@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>IDRS · ระบบบันทึกข้อมูลการลงทุน</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body { display: grid; place-items: center; background: #0b1220; color: #e6edf7; font-family: system-ui, "Noto Sans Thai", sans-serif; text-align: center; padding: 16px; }
+  a { color: #38d0ff; }
+  p { margin: 8px 0; }
+  .small { color: #8fa3bf; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <p><strong>IDRS</strong> · ระบบบันทึกข้อมูลการลงทุน</p>
+  <p id="msg">กำลังเปิดระบบ...</p>
+  <p class="small"><a id="go" href="#">ถ้าไม่เปลี่ยนหน้าให้อัตโนมัติ กดที่นี่</a></p>
+  <noscript><p class="small">เบราว์เซอร์ปิด JavaScript อยู่ กรุณาเปิดใช้งานเพื่อเข้าระบบ</p></noscript>
+</main>
+<script>
+  // วางลิงก์ Web app ของ Apps Script (ลงท้ายด้วย /exec) แทนข้อความในเครื่องหมายคำพูดด้านล่าง ที่เดียวพอ
+  var TARGET = 'https://script.google.com/macros/s/AKfycbz9b1zQ4Jv30phR4WcsmxrolXp2q7JVUrbglkag8sOgsYyHKWhpKbTqUbTJJbcitGOM/exec';
+
+  var ok = /^https:\/\/script\.google\.com\/(macros\/s\/[^\/]+|a\/macros\/[^\/]+\/s\/[^\/]+)\/exec$/.test(TARGET);
+  if (!ok) {
+    document.getElementById('msg').textContent = 'ยังไม่ได้ตั้งลิงก์ปลายทาง (แก้ค่า TARGET ในไฟล์ index.html)';
+    document.getElementById('go').style.display = 'none';
+  } else {
+    document.getElementById('go').href = TARGET;
+    window.location.replace(TARGET + window.location.search);   // ส่งพารามิเตอร์ต่อท้ายไปด้วย
+  }
+</script>
+</body>
+</html>
